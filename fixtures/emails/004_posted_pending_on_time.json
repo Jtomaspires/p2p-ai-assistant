@@ -1,0 +1,28 @@
+{
+  "id": "email_004",
+  "scenario": "posted_pending_on_time",
+  "tags": [
+    "posted",
+    "pending_payment",
+    "on_time"
+  ],
+  "input": {
+    "subject": "Payment status for INV-2026-0001",
+    "from": "billing@acme-supplies.com",
+    "body": "Hi,\n\nCould you confirm when invoice INV-2026-0001 (EUR 12,300.00) will be paid? It is still within NT30.\n\nMaria",
+    "attachments": [
+      "structured_clean.pdf"
+    ]
+  },
+  "expected": {
+    "intent": "payment_status",
+    "ticket_status": "awaiting_human",
+    "ticket_flag": null,
+    "invoice_resolution": "posted_pending",
+    "draft_target": "sender",
+    "to_email": "billing@acme-supplies.com",
+    "attach_invoice_pdf": false,
+    "attach_payment_proof": false,
+    "human_action_needed": true
+  }
+}

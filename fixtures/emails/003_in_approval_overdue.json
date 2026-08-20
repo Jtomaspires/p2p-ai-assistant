@@ -1,0 +1,28 @@
+{
+  "id": "email_003",
+  "scenario": "in_approval_overdue",
+  "tags": [
+    "in_approval",
+    "overdue",
+    "fya"
+  ],
+  "input": {
+    "subject": "Invoice INV-2026-0010 is overdue",
+    "from": "billing@acme-supplies.com",
+    "body": "Dear team,\n\nInvoice INV-2026-0010 for EUR 6,765.00 is past due. Can you chase the approver?\n\nMaria Costa",
+    "attachments": [
+      "INV-2026-0010.pdf"
+    ]
+  },
+  "expected": {
+    "intent": "payment_status",
+    "ticket_status": "awaiting_human",
+    "ticket_flag": null,
+    "invoice_resolution": "in_approval",
+    "draft_target": "approval_owners",
+    "to_email": "approver@company.com",
+    "attach_invoice_pdf": false,
+    "attach_payment_proof": false,
+    "human_action_needed": true
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "email_019",
+  "scenario": "no_approval_owner",
+  "tags": [
+    "in_approval",
+    "overdue",
+    "no_owner",
+    "hitl"
+  ],
+  "input": {
+    "subject": "FYA missing owner for INV-2026-0010",
+    "from": "billing@acme-supplies.com",
+    "body": "Hello,\n\nInvoice INV-2026-0010 (EUR 6,765.00) is overdue in approval but there is no approval owner to chase.\n\nMaria",
+    "attachments": []
+  },
+  "expected": {
+    "intent": "payment_status",
+    "ticket_status": "awaiting_human",
+    "ticket_flag": "hitl",
+    "invoice_resolution": "in_approval",
+    "draft_target": null,
+    "to_email": null,
+    "attach_invoice_pdf": false,
+    "attach_payment_proof": false,
+    "human_action_needed": true
+  }
+}

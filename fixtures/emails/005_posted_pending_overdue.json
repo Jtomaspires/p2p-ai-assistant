@@ -1,0 +1,29 @@
+{
+  "id": "email_005",
+  "scenario": "posted_pending_overdue",
+  "tags": [
+    "posted",
+    "pending_payment",
+    "overdue",
+    "payments"
+  ],
+  "input": {
+    "subject": "INV-2026-0003 overdue - please pay",
+    "from": "billing@acme-supplies.com",
+    "body": "Hello,\n\nInvoice INV-2026-0003 for EUR 8,610.00 is overdue. Please process payment.\n\nMaria Costa",
+    "attachments": [
+      "INV-2026-0003.pdf"
+    ]
+  },
+  "expected": {
+    "intent": "payment_status",
+    "ticket_status": "awaiting_human",
+    "ticket_flag": null,
+    "invoice_resolution": "posted_pending",
+    "draft_target": "payments",
+    "to_email": "payments@company.com",
+    "attach_invoice_pdf": false,
+    "attach_payment_proof": false,
+    "human_action_needed": true
+  }
+}

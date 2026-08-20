@@ -1,0 +1,726 @@
+{
+  "d": {
+    "results": [
+      {
+        "SupplierInvoice": "5105600001",
+        "FiscalYear": "2026",
+        "CompanyCode": "1010",
+        "DocumentDate": "/Date(1785888000000)/",
+        "PostingDate": "/Date(1785888000000)/",
+        "SupplierInvoiceIDByInvcgParty": "INV-2026-0001",
+        "InvoicingParty": "10300006",
+        "DocumentCurrency": "EUR",
+        "InvoiceGrossAmount": "12300.00",
+        "TaxAmount": "2300.00",
+        "SupplierInvoiceStatus": "",
+        "PaymentTerms": "NT30",
+        "DueCalculationBaseDate": "/Date(1785888000000)/",
+        "NetPaymentDays": "30",
+        "PaymentBlockingReason": "",
+        "AccountingDocumentType": "RE",
+        "SupplierInvoiceIsCreditMemo": false,
+        "TaxIsCalculatedAutomatically": true,
+        "to_SuplrInvcItemPurOrdRef": {
+          "results": [
+            {
+              "SupplierInvoiceItem": "1",
+              "PurchaseOrder": "4500001646",
+              "PurchaseOrderItem": "10",
+              "Plant": "1010",
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "SupplierInvoiceItemAmount": "10000.00",
+              "PurchaseOrderQuantityUnit": "PC",
+              "QuantityInPurchaseOrderUnit": "100",
+              "PurchaseOrderPriceUnit": "PC",
+              "QtyInPurchaseOrderPriceUnit": "100",
+              "SupplierInvoiceItemText": "Material ABC"
+            }
+          ]
+        },
+        "to_SupplierInvoiceTax": {
+          "results": [
+            {
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "TaxAmount": "2300.00",
+              "TaxBaseAmountInTransCrcy": "10000.00"
+            }
+          ]
+        }
+      },
+      {
+        "SupplierInvoice": "5105600002",
+        "FiscalYear": "2026",
+        "CompanyCode": "1010",
+        "DocumentDate": "/Date(1785888000000)/",
+        "PostingDate": "/Date(1785888000000)/",
+        "SupplierInvoiceIDByInvcgParty": "INV-2026-0002",
+        "InvoicingParty": "10300006",
+        "DocumentCurrency": "EUR",
+        "InvoiceGrossAmount": "4920.00",
+        "TaxAmount": "920.00",
+        "SupplierInvoiceStatus": "",
+        "PaymentTerms": "NT30",
+        "DueCalculationBaseDate": "/Date(1785888000000)/",
+        "NetPaymentDays": "30",
+        "PaymentBlockingReason": "",
+        "AccountingDocumentType": "RE",
+        "SupplierInvoiceIsCreditMemo": false,
+        "TaxIsCalculatedAutomatically": true,
+        "to_SuplrInvcItemPurOrdRef": {
+          "results": [
+            {
+              "SupplierInvoiceItem": "1",
+              "PurchaseOrder": "4500001647",
+              "PurchaseOrderItem": "10",
+              "Plant": "1010",
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "SupplierInvoiceItemAmount": "4000.00",
+              "PurchaseOrderQuantityUnit": "PC",
+              "QuantityInPurchaseOrderUnit": "1",
+              "PurchaseOrderPriceUnit": "PC",
+              "QtyInPurchaseOrderPriceUnit": "1",
+              "SupplierInvoiceItemText": "Material DEF"
+            }
+          ]
+        },
+        "to_SupplierInvoiceTax": {
+          "results": [
+            {
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "TaxAmount": "920.00",
+              "TaxBaseAmountInTransCrcy": "4000.00"
+            }
+          ]
+        }
+      },
+      {
+        "SupplierInvoice": "5105600003",
+        "FiscalYear": "2026",
+        "CompanyCode": "1010",
+        "DocumentDate": "/Date(1780272000000)/",
+        "PostingDate": "/Date(1780272000000)/",
+        "SupplierInvoiceIDByInvcgParty": "INV-2026-0003",
+        "InvoicingParty": "10300006",
+        "DocumentCurrency": "EUR",
+        "InvoiceGrossAmount": "8610.00",
+        "TaxAmount": "1610.00",
+        "SupplierInvoiceStatus": "",
+        "PaymentTerms": "NT30",
+        "DueCalculationBaseDate": "/Date(1780272000000)/",
+        "NetPaymentDays": "30",
+        "PaymentBlockingReason": "",
+        "AccountingDocumentType": "RE",
+        "SupplierInvoiceIsCreditMemo": false,
+        "TaxIsCalculatedAutomatically": true,
+        "to_SuplrInvcItemPurOrdRef": {
+          "results": [
+            {
+              "SupplierInvoiceItem": "1",
+              "PurchaseOrder": "4500001648",
+              "PurchaseOrderItem": "10",
+              "Plant": "1010",
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "SupplierInvoiceItemAmount": "7000.00",
+              "PurchaseOrderQuantityUnit": "PC",
+              "QuantityInPurchaseOrderUnit": "1",
+              "PurchaseOrderPriceUnit": "PC",
+              "QtyInPurchaseOrderPriceUnit": "1",
+              "SupplierInvoiceItemText": "Material GHI"
+            }
+          ]
+        },
+        "to_SupplierInvoiceTax": {
+          "results": [
+            {
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "TaxAmount": "1610.00",
+              "TaxBaseAmountInTransCrcy": "7000.00"
+            }
+          ]
+        }
+      },
+      {
+        "SupplierInvoice": "5105600004",
+        "FiscalYear": "2026",
+        "CompanyCode": "1010",
+        "DocumentDate": "/Date(1785888000000)/",
+        "PostingDate": "/Date(1785888000000)/",
+        "SupplierInvoiceIDByInvcgParty": "INV-2026-0004",
+        "InvoicingParty": "10300006",
+        "DocumentCurrency": "EUR",
+        "InvoiceGrossAmount": "2460.00",
+        "TaxAmount": "460.00",
+        "SupplierInvoiceStatus": "",
+        "PaymentTerms": "NT30",
+        "DueCalculationBaseDate": "/Date(1785888000000)/",
+        "NetPaymentDays": "30",
+        "PaymentBlockingReason": "A",
+        "AccountingDocumentType": "RE",
+        "SupplierInvoiceIsCreditMemo": false,
+        "TaxIsCalculatedAutomatically": true,
+        "to_SuplrInvcItemPurOrdRef": {
+          "results": [
+            {
+              "SupplierInvoiceItem": "1",
+              "PurchaseOrder": "4500001649",
+              "PurchaseOrderItem": "10",
+              "Plant": "1010",
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "SupplierInvoiceItemAmount": "2000.00",
+              "PurchaseOrderQuantityUnit": "PC",
+              "QuantityInPurchaseOrderUnit": "1",
+              "PurchaseOrderPriceUnit": "PC",
+              "QtyInPurchaseOrderPriceUnit": "1",
+              "SupplierInvoiceItemText": "Material JKL"
+            }
+          ]
+        },
+        "to_SupplierInvoiceTax": {
+          "results": [
+            {
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "TaxAmount": "460.00",
+              "TaxBaseAmountInTransCrcy": "2000.00"
+            }
+          ]
+        }
+      },
+      {
+        "SupplierInvoice": "5105600005",
+        "FiscalYear": "2026",
+        "CompanyCode": "1010",
+        "DocumentDate": "/Date(1781481600000)/",
+        "PostingDate": "/Date(1781481600000)/",
+        "SupplierInvoiceIDByInvcgParty": "INV-2026-0005",
+        "InvoicingParty": "10300006",
+        "DocumentCurrency": "EUR",
+        "InvoiceGrossAmount": "14760.00",
+        "TaxAmount": "2760.00",
+        "SupplierInvoiceStatus": "",
+        "PaymentTerms": "NT30",
+        "DueCalculationBaseDate": "/Date(1781481600000)/",
+        "NetPaymentDays": "30",
+        "PaymentBlockingReason": "",
+        "AccountingDocumentType": "RE",
+        "SupplierInvoiceIsCreditMemo": false,
+        "TaxIsCalculatedAutomatically": true,
+        "to_SuplrInvcItemPurOrdRef": {
+          "results": [
+            {
+              "SupplierInvoiceItem": "1",
+              "PurchaseOrder": "4500001650",
+              "PurchaseOrderItem": "10",
+              "Plant": "1010",
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "SupplierInvoiceItemAmount": "12000.00",
+              "PurchaseOrderQuantityUnit": "PC",
+              "QuantityInPurchaseOrderUnit": "1",
+              "PurchaseOrderPriceUnit": "PC",
+              "QtyInPurchaseOrderPriceUnit": "1",
+              "SupplierInvoiceItemText": "Material MNO"
+            }
+          ]
+        },
+        "to_SupplierInvoiceTax": {
+          "results": [
+            {
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "TaxAmount": "2760.00",
+              "TaxBaseAmountInTransCrcy": "12000.00"
+            }
+          ]
+        }
+      },
+      {
+        "SupplierInvoice": "5105600006",
+        "FiscalYear": "2026",
+        "CompanyCode": "1010",
+        "DocumentDate": "/Date(1781481600000)/",
+        "PostingDate": "/Date(1781481600000)/",
+        "SupplierInvoiceIDByInvcgParty": "INV-2026-0006",
+        "InvoicingParty": "10300006",
+        "DocumentCurrency": "EUR",
+        "InvoiceGrossAmount": "3690.00",
+        "TaxAmount": "690.00",
+        "SupplierInvoiceStatus": "",
+        "PaymentTerms": "NT30",
+        "DueCalculationBaseDate": "/Date(1781481600000)/",
+        "NetPaymentDays": "30",
+        "PaymentBlockingReason": "",
+        "AccountingDocumentType": "RE",
+        "SupplierInvoiceIsCreditMemo": false,
+        "TaxIsCalculatedAutomatically": true,
+        "to_SuplrInvcItemPurOrdRef": {
+          "results": [
+            {
+              "SupplierInvoiceItem": "1",
+              "PurchaseOrder": "4500001651",
+              "PurchaseOrderItem": "10",
+              "Plant": "1010",
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "SupplierInvoiceItemAmount": "3000.00",
+              "PurchaseOrderQuantityUnit": "PC",
+              "QuantityInPurchaseOrderUnit": "1",
+              "PurchaseOrderPriceUnit": "PC",
+              "QtyInPurchaseOrderPriceUnit": "1",
+              "SupplierInvoiceItemText": "Material PQR"
+            }
+          ]
+        },
+        "to_SupplierInvoiceTax": {
+          "results": [
+            {
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "TaxAmount": "690.00",
+              "TaxBaseAmountInTransCrcy": "3000.00"
+            }
+          ]
+        }
+      },
+      {
+        "SupplierInvoice": "5105600007",
+        "FiscalYear": "2026",
+        "CompanyCode": "1010",
+        "DocumentDate": "/Date(1781481600000)/",
+        "PostingDate": "/Date(1781481600000)/",
+        "SupplierInvoiceIDByInvcgParty": "INV-2026-0007",
+        "InvoicingParty": "10300006",
+        "DocumentCurrency": "EUR",
+        "InvoiceGrossAmount": "7380.00",
+        "TaxAmount": "1380.00",
+        "SupplierInvoiceStatus": "",
+        "PaymentTerms": "NT30",
+        "DueCalculationBaseDate": "/Date(1781481600000)/",
+        "NetPaymentDays": "30",
+        "PaymentBlockingReason": "",
+        "AccountingDocumentType": "RE",
+        "SupplierInvoiceIsCreditMemo": false,
+        "TaxIsCalculatedAutomatically": true,
+        "to_SuplrInvcItemPurOrdRef": {
+          "results": [
+            {
+              "SupplierInvoiceItem": "1",
+              "PurchaseOrder": "4500001652",
+              "PurchaseOrderItem": "10",
+              "Plant": "1010",
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "SupplierInvoiceItemAmount": "6000.00",
+              "PurchaseOrderQuantityUnit": "PC",
+              "QuantityInPurchaseOrderUnit": "1",
+              "PurchaseOrderPriceUnit": "PC",
+              "QtyInPurchaseOrderPriceUnit": "1",
+              "SupplierInvoiceItemText": "Material STU"
+            }
+          ]
+        },
+        "to_SupplierInvoiceTax": {
+          "results": [
+            {
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "TaxAmount": "1380.00",
+              "TaxBaseAmountInTransCrcy": "6000.00"
+            }
+          ]
+        }
+      },
+      {
+        "SupplierInvoice": "5105600008",
+        "FiscalYear": "2026",
+        "CompanyCode": "1010",
+        "DocumentDate": "/Date(1786320000000)/",
+        "PostingDate": "/Date(1786320000000)/",
+        "SupplierInvoiceIDByInvcgParty": "INV-2026-0008",
+        "InvoicingParty": "10300006",
+        "DocumentCurrency": "EUR",
+        "InvoiceGrossAmount": "6150.00",
+        "TaxAmount": "1150.00",
+        "SupplierInvoiceStatus": "A",
+        "PaymentTerms": "NT30",
+        "DueCalculationBaseDate": "/Date(1786320000000)/",
+        "NetPaymentDays": "30",
+        "PaymentBlockingReason": "",
+        "AccountingDocumentType": "RE",
+        "SupplierInvoiceIsCreditMemo": false,
+        "TaxIsCalculatedAutomatically": true,
+        "to_SuplrInvcItemPurOrdRef": {
+          "results": [
+            {
+              "SupplierInvoiceItem": "1",
+              "PurchaseOrder": "4500001653",
+              "PurchaseOrderItem": "10",
+              "Plant": "1010",
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "SupplierInvoiceItemAmount": "5000.00",
+              "PurchaseOrderQuantityUnit": "PC",
+              "QuantityInPurchaseOrderUnit": "1",
+              "PurchaseOrderPriceUnit": "PC",
+              "QtyInPurchaseOrderPriceUnit": "1",
+              "SupplierInvoiceItemText": "Material VWX"
+            }
+          ]
+        },
+        "to_SupplierInvoiceTax": {
+          "results": [
+            {
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "TaxAmount": "1150.00",
+              "TaxBaseAmountInTransCrcy": "5000.00"
+            }
+          ]
+        }
+      },
+      {
+        "SupplierInvoice": "5105600009",
+        "FiscalYear": "2026",
+        "CompanyCode": "1010",
+        "DocumentDate": "/Date(1786320000000)/",
+        "PostingDate": "/Date(1786320000000)/",
+        "SupplierInvoiceIDByInvcgParty": "INV-2026-0009",
+        "InvoicingParty": "10300006",
+        "DocumentCurrency": "EUR",
+        "InvoiceGrossAmount": "11070.00",
+        "TaxAmount": "2070.00",
+        "SupplierInvoiceStatus": "A",
+        "PaymentTerms": "NT30",
+        "DueCalculationBaseDate": "/Date(1786320000000)/",
+        "NetPaymentDays": "30",
+        "PaymentBlockingReason": "",
+        "AccountingDocumentType": "RE",
+        "SupplierInvoiceIsCreditMemo": false,
+        "TaxIsCalculatedAutomatically": true,
+        "to_SuplrInvcItemPurOrdRef": {
+          "results": [
+            {
+              "SupplierInvoiceItem": "1",
+              "PurchaseOrder": "4500001654",
+              "PurchaseOrderItem": "10",
+              "Plant": "1010",
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "SupplierInvoiceItemAmount": "9000.00",
+              "PurchaseOrderQuantityUnit": "PC",
+              "QuantityInPurchaseOrderUnit": "1",
+              "PurchaseOrderPriceUnit": "PC",
+              "QtyInPurchaseOrderPriceUnit": "1",
+              "SupplierInvoiceItemText": "Material YZ"
+            }
+          ]
+        },
+        "to_SupplierInvoiceTax": {
+          "results": [
+            {
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "TaxAmount": "2070.00",
+              "TaxBaseAmountInTransCrcy": "9000.00"
+            }
+          ]
+        }
+      },
+      {
+        "SupplierInvoice": "5105600010",
+        "FiscalYear": "2026",
+        "CompanyCode": "1010",
+        "DocumentDate": "/Date(1778803200000)/",
+        "PostingDate": "/Date(1778803200000)/",
+        "SupplierInvoiceIDByInvcgParty": "INV-2026-0010",
+        "InvoicingParty": "10300006",
+        "DocumentCurrency": "EUR",
+        "InvoiceGrossAmount": "6765.00",
+        "TaxAmount": "1265.00",
+        "SupplierInvoiceStatus": "A",
+        "PaymentTerms": "NT30",
+        "DueCalculationBaseDate": "/Date(1778803200000)/",
+        "NetPaymentDays": "30",
+        "PaymentBlockingReason": "",
+        "AccountingDocumentType": "RE",
+        "SupplierInvoiceIsCreditMemo": false,
+        "TaxIsCalculatedAutomatically": true,
+        "to_SuplrInvcItemPurOrdRef": {
+          "results": [
+            {
+              "SupplierInvoiceItem": "1",
+              "PurchaseOrder": "4500001655",
+              "PurchaseOrderItem": "10",
+              "Plant": "1010",
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "SupplierInvoiceItemAmount": "5500.00",
+              "PurchaseOrderQuantityUnit": "PC",
+              "QuantityInPurchaseOrderUnit": "1",
+              "PurchaseOrderPriceUnit": "PC",
+              "QtyInPurchaseOrderPriceUnit": "1",
+              "SupplierInvoiceItemText": "Material AAA"
+            }
+          ]
+        },
+        "to_SupplierInvoiceTax": {
+          "results": [
+            {
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "TaxAmount": "1265.00",
+              "TaxBaseAmountInTransCrcy": "5500.00"
+            }
+          ]
+        }
+      },
+      {
+        "SupplierInvoice": "5105600011",
+        "FiscalYear": "2026",
+        "CompanyCode": "1010",
+        "DocumentDate": "/Date(1785888000000)/",
+        "PostingDate": "/Date(1785888000000)/",
+        "SupplierInvoiceIDByInvcgParty": "INV-ACME-7788",
+        "InvoicingParty": "10300006",
+        "DocumentCurrency": "EUR",
+        "InvoiceGrossAmount": "12546.00",
+        "TaxAmount": "2346.00",
+        "SupplierInvoiceStatus": "",
+        "PaymentTerms": "NT30",
+        "DueCalculationBaseDate": "/Date(1785888000000)/",
+        "NetPaymentDays": "30",
+        "PaymentBlockingReason": "",
+        "AccountingDocumentType": "RE",
+        "SupplierInvoiceIsCreditMemo": false,
+        "TaxIsCalculatedAutomatically": true,
+        "to_SuplrInvcItemPurOrdRef": {
+          "results": [
+            {
+              "SupplierInvoiceItem": "1",
+              "PurchaseOrder": "4500001656",
+              "PurchaseOrderItem": "10",
+              "Plant": "1010",
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "SupplierInvoiceItemAmount": "10200.00",
+              "PurchaseOrderQuantityUnit": "PC",
+              "QuantityInPurchaseOrderUnit": "1",
+              "PurchaseOrderPriceUnit": "PC",
+              "QtyInPurchaseOrderPriceUnit": "1",
+              "SupplierInvoiceItemText": "Material ABC"
+            }
+          ]
+        },
+        "to_SupplierInvoiceTax": {
+          "results": [
+            {
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "TaxAmount": "2346.00",
+              "TaxBaseAmountInTransCrcy": "10200.00"
+            }
+          ]
+        }
+      },
+      {
+        "SupplierInvoice": "5105600012",
+        "FiscalYear": "2026",
+        "CompanyCode": "1010",
+        "DocumentDate": "/Date(1785888000000)/",
+        "PostingDate": "/Date(1785888000000)/",
+        "SupplierInvoiceIDByInvcgParty": "INV-ACME-9901",
+        "InvoicingParty": "10300006",
+        "DocumentCurrency": "EUR",
+        "InvoiceGrossAmount": "5018.40",
+        "TaxAmount": "938.40",
+        "SupplierInvoiceStatus": "",
+        "PaymentTerms": "NT30",
+        "DueCalculationBaseDate": "/Date(1785888000000)/",
+        "NetPaymentDays": "30",
+        "PaymentBlockingReason": "",
+        "AccountingDocumentType": "RE",
+        "SupplierInvoiceIsCreditMemo": false,
+        "TaxIsCalculatedAutomatically": true,
+        "to_SuplrInvcItemPurOrdRef": {
+          "results": [
+            {
+              "SupplierInvoiceItem": "1",
+              "PurchaseOrder": "4500001657",
+              "PurchaseOrderItem": "10",
+              "Plant": "1010",
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "SupplierInvoiceItemAmount": "4080.00",
+              "PurchaseOrderQuantityUnit": "PC",
+              "QuantityInPurchaseOrderUnit": "1",
+              "PurchaseOrderPriceUnit": "PC",
+              "QtyInPurchaseOrderPriceUnit": "1",
+              "SupplierInvoiceItemText": "Material DEF"
+            }
+          ]
+        },
+        "to_SupplierInvoiceTax": {
+          "results": [
+            {
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "TaxAmount": "938.40",
+              "TaxBaseAmountInTransCrcy": "4080.00"
+            }
+          ]
+        }
+      },
+      {
+        "SupplierInvoice": "5105600013",
+        "FiscalYear": "2026",
+        "CompanyCode": "1010",
+        "DocumentDate": "/Date(1785888000000)/",
+        "PostingDate": "/Date(1785888000000)/",
+        "SupplierInvoiceIDByInvcgParty": "INV-2026-DUP-01",
+        "InvoicingParty": "10300006",
+        "DocumentCurrency": "EUR",
+        "InvoiceGrossAmount": "9840.00",
+        "TaxAmount": "1840.00",
+        "SupplierInvoiceStatus": "",
+        "PaymentTerms": "NT30",
+        "DueCalculationBaseDate": "/Date(1785888000000)/",
+        "NetPaymentDays": "30",
+        "PaymentBlockingReason": "",
+        "AccountingDocumentType": "RE",
+        "SupplierInvoiceIsCreditMemo": false,
+        "TaxIsCalculatedAutomatically": true,
+        "to_SuplrInvcItemPurOrdRef": {
+          "results": [
+            {
+              "SupplierInvoiceItem": "1",
+              "PurchaseOrder": "4500001658",
+              "PurchaseOrderItem": "10",
+              "Plant": "1010",
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "SupplierInvoiceItemAmount": "8000.00",
+              "PurchaseOrderQuantityUnit": "PC",
+              "QuantityInPurchaseOrderUnit": "1",
+              "PurchaseOrderPriceUnit": "PC",
+              "QtyInPurchaseOrderPriceUnit": "1",
+              "SupplierInvoiceItemText": "Material BBB"
+            }
+          ]
+        },
+        "to_SupplierInvoiceTax": {
+          "results": [
+            {
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "TaxAmount": "1840.00",
+              "TaxBaseAmountInTransCrcy": "8000.00"
+            }
+          ]
+        }
+      },
+      {
+        "SupplierInvoice": "5105600014",
+        "FiscalYear": "2026",
+        "CompanyCode": "1010",
+        "DocumentDate": "/Date(1785888000000)/",
+        "PostingDate": "/Date(1785888000000)/",
+        "SupplierInvoiceIDByInvcgParty": "INV-2026-DUP-01",
+        "InvoicingParty": "10300006",
+        "DocumentCurrency": "EUR",
+        "InvoiceGrossAmount": "9840.00",
+        "TaxAmount": "1840.00",
+        "SupplierInvoiceStatus": "",
+        "PaymentTerms": "NT30",
+        "DueCalculationBaseDate": "/Date(1785888000000)/",
+        "NetPaymentDays": "30",
+        "PaymentBlockingReason": "",
+        "AccountingDocumentType": "RE",
+        "SupplierInvoiceIsCreditMemo": false,
+        "TaxIsCalculatedAutomatically": true,
+        "to_SuplrInvcItemPurOrdRef": {
+          "results": [
+            {
+              "SupplierInvoiceItem": "1",
+              "PurchaseOrder": "4500001658",
+              "PurchaseOrderItem": "10",
+              "Plant": "1010",
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "SupplierInvoiceItemAmount": "8000.00",
+              "PurchaseOrderQuantityUnit": "PC",
+              "QuantityInPurchaseOrderUnit": "1",
+              "PurchaseOrderPriceUnit": "PC",
+              "QtyInPurchaseOrderPriceUnit": "1",
+              "SupplierInvoiceItemText": "Material BBB"
+            }
+          ]
+        },
+        "to_SupplierInvoiceTax": {
+          "results": [
+            {
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "TaxAmount": "1840.00",
+              "TaxBaseAmountInTransCrcy": "8000.00"
+            }
+          ]
+        }
+      },
+      {
+        "SupplierInvoice": "5105600015",
+        "FiscalYear": "2026",
+        "CompanyCode": "1010",
+        "DocumentDate": "/Date(1785888000000)/",
+        "PostingDate": "/Date(1785888000000)/",
+        "SupplierInvoiceIDByInvcgParty": "CM-2026-0001",
+        "InvoicingParty": "10300006",
+        "DocumentCurrency": "EUR",
+        "InvoiceGrossAmount": "615.00",
+        "TaxAmount": "115.00",
+        "SupplierInvoiceStatus": "",
+        "PaymentTerms": "NT30",
+        "DueCalculationBaseDate": "/Date(1785888000000)/",
+        "NetPaymentDays": "30",
+        "PaymentBlockingReason": "",
+        "AccountingDocumentType": "KG",
+        "SupplierInvoiceIsCreditMemo": true,
+        "TaxIsCalculatedAutomatically": true,
+        "to_SuplrInvcItemPurOrdRef": {
+          "results": [
+            {
+              "SupplierInvoiceItem": "1",
+              "PurchaseOrder": "4500001659",
+              "PurchaseOrderItem": "10",
+              "Plant": "1010",
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "SupplierInvoiceItemAmount": "500.00",
+              "PurchaseOrderQuantityUnit": "PC",
+              "QuantityInPurchaseOrderUnit": "1",
+              "PurchaseOrderPriceUnit": "PC",
+              "QtyInPurchaseOrderPriceUnit": "1",
+              "SupplierInvoiceItemText": "Credit memo — returned goods"
+            }
+          ]
+        },
+        "to_SupplierInvoiceTax": {
+          "results": [
+            {
+              "TaxCode": "V1",
+              "DocumentCurrency": "EUR",
+              "TaxAmount": "115.00",
+              "TaxBaseAmountInTransCrcy": "500.00"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

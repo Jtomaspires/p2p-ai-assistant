@@ -1,0 +1,25 @@
+{
+  "id": "email_013",
+  "scenario": "delegated_sender",
+  "tags": [
+    "delegated",
+    "routing_rule"
+  ],
+  "input": {
+    "subject": "Group invoice INV-2026-0002 status",
+    "from": "joao.silva@group-subsidiary.com",
+    "body": "Hi P2P,\n\nCan you check invoice INV-2026-0002 for EUR 4,920.00 on behalf of Group Subsidiary SA?\n\nJoão Silva",
+    "attachments": []
+  },
+  "expected": {
+    "intent": "payment_status",
+    "ticket_status": "delegated",
+    "ticket_flag": "delegated",
+    "invoice_resolution": null,
+    "draft_target": null,
+    "to_email": null,
+    "attach_invoice_pdf": false,
+    "attach_payment_proof": false,
+    "human_action_needed": true
+  }
+}

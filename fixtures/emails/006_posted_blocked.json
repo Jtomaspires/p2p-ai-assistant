@@ -1,0 +1,28 @@
+{
+  "id": "email_006",
+  "scenario": "posted_blocked",
+  "tags": [
+    "posted",
+    "blocked",
+    "payments"
+  ],
+  "input": {
+    "subject": "Why is INV-2026-0004 blocked?",
+    "from": "billing@acme-supplies.com",
+    "body": "Dear payments team,\n\nInvoice INV-2026-0004 (EUR 2,460.00) appears blocked. What is the payment blocking reason?\n\nMaria",
+    "attachments": [
+      "INV-2026-0004.pdf"
+    ]
+  },
+  "expected": {
+    "intent": "delay_reason",
+    "ticket_status": "awaiting_human",
+    "ticket_flag": null,
+    "invoice_resolution": "posted_blocked",
+    "draft_target": "payments",
+    "to_email": "payments@company.com",
+    "attach_invoice_pdf": false,
+    "attach_payment_proof": false,
+    "human_action_needed": true
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "senders": [
+    {
+      "email": "billing@acme-supplies.com",
+      "name": "Maria Costa",
+      "company": "ACME Supplies Lda",
+      "vendor_sap_id": "10300006",
+      "type": "external_supplier"
+    },
+    {
+      "email": "joao.silva@group-subsidiary.com",
+      "name": "João Silva",
+      "company": "Group Subsidiary SA",
+      "vendor_sap_id": null,
+      "type": "internal_group"
+    },
+    {
+      "email": "ana.santos@p2p-branch.com",
+      "name": "Ana Santos",
+      "company": "P2P Branch",
+      "vendor_sap_id": null,
+      "type": "p2p_contact"
+    }
+  ],
+  "routing_rules": [
+    {
+      "id": "R1",
+      "domain": "group-subsidiary.com",
+      "operator_id": "op_ana"
+    }
+  ]
+}

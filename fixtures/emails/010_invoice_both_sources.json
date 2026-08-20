@@ -1,0 +1,28 @@
+{
+  "id": "email_010",
+  "scenario": "invoice_both_sources",
+  "tags": [
+    "both_sources",
+    "hitl",
+    "sap_inconsistency"
+  ],
+  "input": {
+    "subject": "INV-2026-0009 showing in approval and AP",
+    "from": "billing@acme-supplies.com",
+    "body": "Hello,\n\nInvoice INV-2026-0009 (EUR 11,070.00) seems to appear both in approval and already posted. Please check.\n\nMaria",
+    "attachments": [
+      "INV-2026-0009.pdf"
+    ]
+  },
+  "expected": {
+    "intent": "payment_status",
+    "ticket_status": "awaiting_human",
+    "ticket_flag": "hitl",
+    "invoice_resolution": "multiple_or_partial",
+    "draft_target": null,
+    "to_email": null,
+    "attach_invoice_pdf": false,
+    "attach_payment_proof": false,
+    "human_action_needed": true
+  }
+}

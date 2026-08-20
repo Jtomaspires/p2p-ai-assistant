@@ -1,0 +1,28 @@
+{
+  "id": "email_015",
+  "scenario": "thread_existing_draft",
+  "tags": [
+    "thread",
+    "invoicing",
+    "no_duplicate_draft"
+  ],
+  "input": {
+    "subject": "Re: Invoice INV-2026-9999 - payment status?",
+    "from": "billing@acme-supplies.com",
+    "body": "Checking in again on INV-2026-9999. We still have no confirmation that you received the invoice.\n\nMaria",
+    "attachments": [
+      "INV-2026-9999.pdf"
+    ]
+  },
+  "expected": {
+    "intent": "payment_status",
+    "ticket_status": "awaiting_human",
+    "ticket_flag": "update_existing_draft",
+    "invoice_resolution": "NOT_FOUND",
+    "draft_target": "invoicing",
+    "to_email": "invoicing@company.com",
+    "attach_invoice_pdf": true,
+    "attach_payment_proof": false,
+    "human_action_needed": true
+  }
+}

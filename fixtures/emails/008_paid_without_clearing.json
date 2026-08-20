@@ -1,0 +1,26 @@
+{
+  "id": "email_008",
+  "scenario": "posted_paid_without_clearing",
+  "tags": [
+    "paid",
+    "no_clearing",
+    "hitl"
+  ],
+  "input": {
+    "subject": "Payment confirmation for INV-2026-0007",
+    "from": "billing@acme-supplies.com",
+    "body": "Hi,\n\nOur records show INV-2026-0007 (EUR 7,380.00) as paid. Can you confirm and send a remittance advice?\n\nMaria",
+    "attachments": []
+  },
+  "expected": {
+    "intent": "payment_status",
+    "ticket_status": "awaiting_human",
+    "ticket_flag": "hitl",
+    "invoice_resolution": "posted_paid",
+    "draft_target": null,
+    "to_email": null,
+    "attach_invoice_pdf": false,
+    "attach_payment_proof": false,
+    "human_action_needed": true
+  }
+}

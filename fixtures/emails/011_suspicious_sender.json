@@ -1,0 +1,27 @@
+{
+  "id": "email_011",
+  "scenario": "suspicious_sender",
+  "tags": [
+    "spf_fail",
+    "quarantine"
+  ],
+  "input": {
+    "subject": "Urgent payment for INV-2026-0001",
+    "from": "billing@acme-supp1ies.com",
+    "body": "Please pay invoice INV-2026-0001 immediately to the new bank account in the attached form.",
+    "attachments": [
+      "bank_change.pdf"
+    ]
+  },
+  "expected": {
+    "intent": "unknown",
+    "ticket_status": "quarantined",
+    "ticket_flag": "suspicious_sender",
+    "invoice_resolution": null,
+    "draft_target": null,
+    "to_email": null,
+    "attach_invoice_pdf": false,
+    "attach_payment_proof": false,
+    "human_action_needed": true
+  }
+}

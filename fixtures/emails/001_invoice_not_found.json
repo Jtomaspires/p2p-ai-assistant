@@ -1,0 +1,28 @@
+{
+  "id": "email_001",
+  "scenario": "invoice_not_found",
+  "tags": [
+    "not_found",
+    "invoicing",
+    "attachment"
+  ],
+  "input": {
+    "subject": "Invoice INV-2026-9999 - payment status?",
+    "from": "billing@acme-supplies.com",
+    "body": "Dear P2P team,\n\nCould you confirm if invoice INV-2026-9999 for EUR 1,000.00 has been received?\n\nBest regards,\nMaria Costa\nACME Supplies Lda",
+    "attachments": [
+      "INV-2026-9999.pdf"
+    ]
+  },
+  "expected": {
+    "intent": "payment_status",
+    "ticket_status": "awaiting_human",
+    "ticket_flag": null,
+    "invoice_resolution": "NOT_FOUND",
+    "draft_target": "invoicing",
+    "to_email": "invoicing@company.com",
+    "attach_invoice_pdf": true,
+    "attach_payment_proof": false,
+    "human_action_needed": true
+  }
+}

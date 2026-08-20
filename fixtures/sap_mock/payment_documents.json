@@ -1,0 +1,24 @@
+{
+  "payment_documents": [
+    {
+      "payment_document": "1400000123",
+      "fiscal_year": "2026",
+      "payment_date": "2026-07-15",
+      "payment_method": "T",
+      "house_bank": "DB01",
+      "amount": "14760.00",
+      "currency": "EUR",
+      "payment_proof_ref": "PROOF-2026-0123.pdf"
+    },
+    {
+      "payment_document": "1400000124",
+      "fiscal_year": "2026",
+      "payment_date": "2026-07-20",
+      "payment_method": "T",
+      "house_bank": "DB01",
+      "amount": "3690.00",
+      "currency": "EUR",
+      "payment_proof_ref": "PROOF-2026-0124.pdf"
+    }
+  ]
+}

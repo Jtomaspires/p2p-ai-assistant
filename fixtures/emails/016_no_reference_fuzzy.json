@@ -1,0 +1,26 @@
+{
+  "id": "email_016",
+  "scenario": "no_reference_fuzzy",
+  "tags": [
+    "no_reference",
+    "fuzzy",
+    "amount_match"
+  ],
+  "input": {
+    "subject": "Payment status for last ACME delivery",
+    "from": "billing@acme-supplies.com",
+    "body": "Hello,\n\nWe sent an invoice for EUR 12,546.00 (no reference in this email). Could you confirm the status?\n\nMaria Costa\nACME Supplies Lda",
+    "attachments": []
+  },
+  "expected": {
+    "intent": "payment_status",
+    "ticket_status": "awaiting_human",
+    "ticket_flag": null,
+    "invoice_resolution": "posted_pending",
+    "draft_target": "sender",
+    "to_email": "billing@acme-supplies.com",
+    "attach_invoice_pdf": false,
+    "attach_payment_proof": false,
+    "human_action_needed": true
+  }
+}

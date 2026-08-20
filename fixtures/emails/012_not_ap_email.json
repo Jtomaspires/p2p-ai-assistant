@@ -1,0 +1,25 @@
+{
+  "id": "email_012",
+  "scenario": "not_ap_email",
+  "tags": [
+    "not_ap",
+    "discard"
+  ],
+  "input": {
+    "subject": "Office lunch next Friday",
+    "from": "newsletter@catering-example.com",
+    "body": "Join us for lunch next Friday in the canteen. RSVP by Wednesday.",
+    "attachments": []
+  },
+  "expected": {
+    "intent": "unknown",
+    "ticket_status": "discarded",
+    "ticket_flag": null,
+    "invoice_resolution": null,
+    "draft_target": null,
+    "to_email": null,
+    "attach_invoice_pdf": false,
+    "attach_payment_proof": false,
+    "human_action_needed": false
+  }
+}

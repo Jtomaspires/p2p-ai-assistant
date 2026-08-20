@@ -1,0 +1,26 @@
+{
+  "id": "email_007",
+  "scenario": "posted_paid_with_clearing",
+  "tags": [
+    "paid",
+    "clearing",
+    "proof"
+  ],
+  "input": {
+    "subject": "Has INV-2026-0005 been paid?",
+    "from": "billing@acme-supplies.com",
+    "body": "Hello,\n\nPlease confirm payment of invoice INV-2026-0005 for EUR 14,760.00 and send the proof if available.\n\nMaria Costa",
+    "attachments": []
+  },
+  "expected": {
+    "intent": "payment_status",
+    "ticket_status": "awaiting_human",
+    "ticket_flag": null,
+    "invoice_resolution": "posted_paid",
+    "draft_target": "sender",
+    "to_email": "billing@acme-supplies.com",
+    "attach_invoice_pdf": false,
+    "attach_payment_proof": true,
+    "human_action_needed": true
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "email_017",
+  "scenario": "vat_discrepancy",
+  "tags": [
+    "vat",
+    "hitl"
+  ],
+  "input": {
+    "subject": "Please confirm INV-2026-0001 amount",
+    "from": "billing@acme-supplies.com",
+    "body": "Hi,\n\nInvoice INV-2026-0001 should be net EUR 10,000.00 plus 6% VAT (EUR 600.00), total EUR 10,600.00. Can you confirm?\n\nMaria",
+    "attachments": [
+      "structured_clean.pdf"
+    ]
+  },
+  "expected": {
+    "intent": "payment_status",
+    "ticket_status": "awaiting_human",
+    "ticket_flag": "VAT_DISCREPANCY",
+    "invoice_resolution": "vat_discrepancy",
+    "draft_target": null,
+    "to_email": null,
+    "attach_invoice_pdf": false,
+    "attach_payment_proof": false,
+    "human_action_needed": true
+  }
+}

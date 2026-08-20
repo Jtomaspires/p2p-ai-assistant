@@ -1,0 +1,26 @@
+{
+  "id": "email_020",
+  "scenario": "no_pdf_attachment",
+  "tags": [
+    "not_found",
+    "no_attachment",
+    "invoicing"
+  ],
+  "input": {
+    "subject": "Did you receive our invoice INV-2026-8888?",
+    "from": "billing@acme-supplies.com",
+    "body": "Hi,\n\nPlease confirm receipt of invoice INV-2026-8888 for EUR 3,000.00. I am not attaching the PDF this time.\n\nMaria Costa",
+    "attachments": []
+  },
+  "expected": {
+    "intent": "payment_status",
+    "ticket_status": "awaiting_human",
+    "ticket_flag": "sem_anexo",
+    "invoice_resolution": "NOT_FOUND",
+    "draft_target": "invoicing",
+    "to_email": "invoicing@company.com",
+    "attach_invoice_pdf": false,
+    "attach_payment_proof": false,
+    "human_action_needed": true
+  }
+}

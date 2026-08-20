@@ -1,0 +1,25 @@
+{
+  "id": "email_009",
+  "scenario": "multiple_candidates",
+  "tags": [
+    "duplicate",
+    "hitl"
+  ],
+  "input": {
+    "subject": "Status of INV-2026-DUP-01",
+    "from": "billing@acme-supplies.com",
+    "body": "Dear team,\n\nPlease advise on invoice INV-2026-DUP-01 for EUR 9,840.00.\n\nMaria Costa",
+    "attachments": []
+  },
+  "expected": {
+    "intent": "payment_status",
+    "ticket_status": "awaiting_human",
+    "ticket_flag": "hitl",
+    "invoice_resolution": "multiple_or_partial",
+    "draft_target": null,
+    "to_email": null,
+    "attach_invoice_pdf": false,
+    "attach_payment_proof": false,
+    "human_action_needed": true
+  }
+}

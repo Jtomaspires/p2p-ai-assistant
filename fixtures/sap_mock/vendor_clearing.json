@@ -1,0 +1,22 @@
+{
+  "vendor_account_items": [
+    {
+      "vendor": "10300006",
+      "document_number": "5105600005",
+      "fiscal_year": "2026",
+      "clearing_document": "1400000123",
+      "clearing_date": "2026-07-15",
+      "amount": "-14760.00",
+      "currency": "EUR"
+    },
+    {
+      "vendor": "10300006",
+      "document_number": "5105600006",
+      "fiscal_year": "2026",
+      "clearing_document": "1400000124",
+      "clearing_date": "2026-07-20",
+      "amount": "-3690.00",
+      "currency": "EUR"
+    }
+  ]
+}

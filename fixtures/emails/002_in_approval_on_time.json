@@ -1,0 +1,28 @@
+{
+  "id": "email_002",
+  "scenario": "in_approval_on_time",
+  "tags": [
+    "in_approval",
+    "on_time",
+    "sender"
+  ],
+  "input": {
+    "subject": "Invoice INV-2026-0008 - any update?",
+    "from": "billing@acme-supplies.com",
+    "body": "Hello,\n\nPlease share the status of invoice INV-2026-0008 (EUR 6,150.00). It should still be within terms.\n\nMaria Costa",
+    "attachments": [
+      "INV-2026-0008.pdf"
+    ]
+  },
+  "expected": {
+    "intent": "payment_status",
+    "ticket_status": "awaiting_human",
+    "ticket_flag": null,
+    "invoice_resolution": "in_approval",
+    "draft_target": "sender",
+    "to_email": "billing@acme-supplies.com",
+    "attach_invoice_pdf": false,
+    "attach_payment_proof": false,
+    "human_action_needed": true
+  }
+}
