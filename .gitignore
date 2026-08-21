@@ -1,9 +1,11 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.egg-info/
 .venv/
 venv/
 .env*
+!.env.dev
 .tools/
 .pytest_cache/
 fixtures/invoices/*.pdf

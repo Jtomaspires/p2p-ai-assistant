@@ -3,15 +3,31 @@ name = "p2p-ai-assistant"
 version = "0.0.1"
 description = "P2P AI Assistant"
 requires-python = ">=3.12"
-dependencies = []
-
-[project.optional-dependencies]
-dev = [
-    "pytest",
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "sqlmodel",
+    "alembic",
+    "psycopg2-binary",
+    "celery[redis]",
+    "pydantic-settings",
+    "openai",
+    "httpx",
+    "structlog",
+    "streamlit",
+    "python-multipart",
     "reportlab",
     "Pillow",
     "pdf2image",
     "pypdfium2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "pytest-cov",
+    "ruff",
 ]
 
 [build-system]
@@ -19,4 +35,20 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = []
+packages = [
+    "app",
+    "app.domain",
+    "app.ports",
+    "app.adapters",
+    "app.workflow",
+    "app.llm",
+    "app.api",
+    "app.dashboard",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
