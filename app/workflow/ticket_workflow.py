@@ -1,4 +1,4 @@
-"""Day 1 TicketWorkflow: nodes 0–5 (Launchpad WorkflowSchema)."""
+"""Day 1 TicketWorkflow: nodes 0-5 (Launchpad WorkflowSchema)."""
 
 from app.domain.events import IncomingEmail
 from app.workflow.core.schema import NodeConfig, WorkflowSchema

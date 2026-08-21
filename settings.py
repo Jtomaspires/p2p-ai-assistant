@@ -26,6 +26,11 @@ class Settings(BaseSettings):
 
     # LLM
     LLM_PRIMARY_MODEL: str = "gpt-4o-mini"
+    LLM_PRIMARY_API_KEY: str | None = None
+    LLM_PRIMARY_BASE_URL: str | None = None
+    LLM_FALLBACK_MODEL: str | None = None
+    LLM_FALLBACK_API_KEY: str | None = None
+    LLM_FALLBACK_BASE_URL: str | None = None
     LLM_TIMEOUT_S: int = 15
     LLM_RETRY_BACKOFF_S: int = 2
 

@@ -6,6 +6,7 @@ from typing import Any
 from pydantic import BaseModel, ConfigDict, Field
 
 from app.domain.events import IncomingEmail
+from app.domain.enums import InvoiceMatchResult
 from app.domain.models import Invoice, ResponseDraft, Sender, Ticket
 from app.domain.results import NodeResult
 
@@ -25,6 +26,11 @@ class ProcessingContext(BaseModel):
     draft: ResponseDraft | None = None
     extracted_ref: str | None = None
     extracted_amount: Decimal | None = None
+    invoice_match_result: InvoiceMatchResult | None = None
+    is_overdue: bool = False
+    is_near_due: bool = False
+    requires_hitl: bool = False
+    operator_notes: str | None = None
     is_thread_continuation: bool = False
     confidence_components: dict = Field(default_factory=dict)
     skip_identity: bool = False

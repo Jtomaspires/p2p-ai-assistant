@@ -43,6 +43,7 @@ packages = [
     "app.workflow",
     "app.workflow.core",
     "app.workflow.nodes",
+    "app.workflow.utils",
     "app.llm",
     "app.api",
     "app.dashboard",
