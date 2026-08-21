@@ -33,6 +33,11 @@ class Settings(BaseSettings):
     NYLAS_SEND_ENABLED: bool = False
     SPF_DKIM_ENABLED: bool = False
     SECURITY_CHECK_ENABLED: bool = False
+    SENDER_DOMAIN_WHITELIST: str = (
+        "acme-supplies.com,group-subsidiary.com,p2p-branch.com,company.com"
+    )
+    TRIAGE_DISCARD_MIN_CONFIDENCE: float = 0.8
+    INTENT_MIN_CONFIDENCE: float = 0.5
 
     model_config = SettingsConfigDict(
         env_file=".env",

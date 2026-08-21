@@ -41,6 +41,8 @@ packages = [
     "app.ports",
     "app.adapters",
     "app.workflow",
+    "app.workflow.core",
+    "app.workflow.nodes",
     "app.llm",
     "app.api",
     "app.dashboard",
@@ -48,6 +50,7 @@ packages = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+asyncio_mode = "auto"
 
 [tool.ruff]
 target-version = "py312"
