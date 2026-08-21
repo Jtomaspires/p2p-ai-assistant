@@ -25,7 +25,9 @@ class IntentOutput(BaseModel):
 class ContinueToSenderRoute(RouterNode):
     def determine_next_node(self, context: ProcessingContext) -> Node | None:
         if context.skip_identity:
-            return None
+            from app.workflow.nodes.resolution import ResolutionNode  # noqa: PLC0415
+
+            return ResolutionNode()
         return SenderIdNode()
 
 

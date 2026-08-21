@@ -5,6 +5,7 @@ from datetime import UTC, datetime
 import pytest
 
 from app.adapters.memory_audit import InMemoryAuditLog
+from app.adapters.memory_draft import InMemoryDraftStore
 from app.adapters.memory_ticket_store import InMemoryTicketStore
 from app.adapters.mock_email import MockEmailAdapter
 from app.adapters.mock_llm import MockLLMAdapter
@@ -48,6 +49,7 @@ def _deps(settings: Settings | None = None, llm_responses: list | None = None) -
         sap=MockSAPAdapter(),
         audit=InMemoryAuditLog(),
         senders=MockSenderDirectory(),
+        drafts=InMemoryDraftStore(),
     )
 
 
@@ -260,11 +262,15 @@ async def test_intent_low_confidence_does_not_stop():
     )
     ctx = _context(deps, _ticket())
     ctx = await _run(IntentNode(), ctx)
+    from app.workflow.nodes.resolution import ResolutionNode
+
     assert ctx.ticket.intent is Intent.UNKNOWN
     assert ctx.skip_identity is True
     assert ctx.last_result.stop_pipeline is False
     assert ctx.ticket.assigned_operator_id == deps.settings.DEFAULT_OPERATOR_ID
-    assert IntentNode().route(ctx) is None
+    # skip_identity now routes directly to ResolutionNode (not None)
+    next_node = IntentNode().route(ctx)
+    assert isinstance(next_node, ResolutionNode)
 
 
 # --- Node 4 sender ---
@@ -339,6 +345,8 @@ async def test_day1_workflow_happy_path():
                 "extracted_ref": "INV-2026-0001",
                 "extracted_amount": "12300.00",
             },
+            # DraftNode LLM call (workflow now continues to HitlNode)
+            {"generated_text": "Your invoice INV-2026-0001 is being processed."},
         ]
     )
     workflow = TicketWorkflow(deps)
@@ -354,7 +362,9 @@ async def test_day1_workflow_happy_path():
     assert ctx.ticket is not None
     assert ctx.ticket.intent is Intent.PAYMENT_STATUS
     assert ctx.sender is not None
-    assert ctx.last_result.action is AuditAction.MINE
+    # Workflow now ends at HitlNode (AWAITING_HUMAN)
+    assert ctx.ticket.status is TicketStatus.AWAITING_HUMAN
+    assert ctx.last_result.action is AuditAction.HITL
     assert {entry.node for entry in deps.audit.entries} >= {
         "IngestionNode",
         "SecurityNode",
@@ -363,6 +373,9 @@ async def test_day1_workflow_happy_path():
         "IntentNode",
         "SenderIdNode",
         "RoutingNode",
+        "ResolutionNode",
+        "DraftNode",
+        "HitlNode",
     }
 
 

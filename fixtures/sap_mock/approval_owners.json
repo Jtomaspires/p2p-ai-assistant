@@ -1,0 +1,19 @@
+{
+  "approval_owners": [
+    {
+      "invoice_ref": "INV-2026-0008",
+      "owner_email": "approver@company.com",
+      "owner_name": "João Tavares"
+    },
+    {
+      "invoice_ref": "INV-2026-0009",
+      "owner_email": "approver@company.com",
+      "owner_name": "João Tavares"
+    },
+    {
+      "invoice_ref": "INV-2026-0010",
+      "owner_email": "approver@company.com",
+      "owner_name": "João Tavares"
+    }
+  ]
+}

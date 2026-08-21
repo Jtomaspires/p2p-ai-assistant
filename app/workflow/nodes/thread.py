@@ -1,17 +1,35 @@
-"""Node 1.5 — thread resolution (Fase 3.1.5)."""
+"""Node 1.5 — thread resolution (Fase 3.1.5).
+
+Acts as a BaseRouter so thread continuations skip Triage/Intent/Sender/Routing
+and jump directly to ResolutionNode.
+"""
 
 from datetime import UTC, datetime
 
 from app.domain.context import ProcessingContext
 from app.domain.enums import AuditAction, TicketStatus
 from app.domain.results import NodeResult
-from app.workflow.core.base import Node
+from app.workflow.core.base import BaseRouter, Node, RouterNode
 from app.workflow.nodes._helpers import finish, require_deps
 
 _REUSE_STATUSES = {TicketStatus.OPEN, TicketStatus.AWAITING_HUMAN}
 
 
-class ThreadResolutionNode(Node):
+class _ThreadContinuationRoute(RouterNode):
+    def determine_next_node(self, context: ProcessingContext) -> Node | None:
+        if context.is_thread_continuation:
+            from app.workflow.nodes.resolution import ResolutionNode  # noqa: PLC0415
+
+            return ResolutionNode()
+        from app.workflow.nodes.triage import TriageNode  # noqa: PLC0415
+
+        return TriageNode()
+
+
+class ThreadResolutionNode(BaseRouter):
+    routes = [_ThreadContinuationRoute()]
+    fallback = None
+
     async def process(self, context: ProcessingContext) -> ProcessingContext:
         self.context = context
         deps = require_deps(context)

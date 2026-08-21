@@ -6,6 +6,7 @@ from decimal import Decimal
 import pytest
 
 from app.adapters.memory_audit import InMemoryAuditLog
+from app.adapters.memory_draft import InMemoryDraftStore
 from app.adapters.memory_ticket_store import InMemoryTicketStore
 from app.adapters.mock_email import MockEmailAdapter
 from app.adapters.mock_llm import MockLLMAdapter
@@ -81,6 +82,7 @@ def _deps(
         sap=sap,
         audit=InMemoryAuditLog(),
         senders=MockSenderDirectory(),
+        drafts=InMemoryDraftStore(),
     )
 
 

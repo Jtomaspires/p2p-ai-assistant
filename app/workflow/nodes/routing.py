@@ -11,7 +11,9 @@ class ContinueAfterRoutingRoute(RouterNode):
     def determine_next_node(self, context: ProcessingContext) -> Node | None:
         if context.ticket is not None and context.ticket.status is TicketStatus.DELEGATED:
             return None
-        return None
+        from app.workflow.nodes.resolution import ResolutionNode  # noqa: PLC0415
+
+        return ResolutionNode()
 
 
 class RoutingNode(BaseRouter):

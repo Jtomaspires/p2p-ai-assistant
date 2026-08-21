@@ -130,6 +130,7 @@ def test_audit_action_members():
         "delegate",
         "resolve",
         "draft",
+        "hitl",
         "approve",
         "approve_edit",
         "escalate",

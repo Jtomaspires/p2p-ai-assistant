@@ -5,14 +5,16 @@ from __future__ import annotations
 import asyncio
 import logging
 from abc import ABC
+from datetime import UTC, datetime
 from typing import Any, ClassVar, Type
 from uuid import UUID
 
 from app.domain.context import ProcessingContext
 from app.domain.deps import WorkflowDeps
-from app.domain.enums import AuditAction
+from app.domain.enums import AuditAction, TicketStatus
 from app.domain.models import AuditEntry
 from app.domain.results import NodeResult
+from app.llm.exceptions import LLMUnavailableError
 from app.workflow.core.base import BaseRouter, Node
 from app.workflow.core.schema import NodeConfig, WorkflowSchema
 from app.workflow.core.validate import WorkflowValidator
@@ -66,20 +68,50 @@ class Workflow(ABC):
         context.deps = self.deps
         current_node_class: Type[Node] | None = self.workflow_schema.start
 
-        while current_node_class:
-            if context.should_stop:
-                logging.info("Stopping workflow execution")
-                break
+        try:
+            while current_node_class:
+                if context.should_stop:
+                    logging.info("Stopping workflow execution")
+                    break
 
-            node_config = self.nodes[current_node_class]
-            node_instance = node_config.node(context=context)
-            context = await node_instance.process(context)
-            self._record_audit(context, node_instance.node_name)
-            await node_instance.cleanup()
+                node_config = self.nodes[current_node_class]
+                node_instance = node_config.node(context=context)
+                context = await node_instance.process(context)
+                self._record_audit(context, node_instance.node_name)
+                await node_instance.cleanup()
 
-            current_node_class = await self._get_next_node_class(current_node_class, context)
+                current_node_class = await self._get_next_node_class(
+                    current_node_class, context
+                )
+        except LLMUnavailableError as exc:
+            logging.error("LLM unavailable — escalating ticket: %s", exc)
+            self._escalate(context)
+        except Exception as exc:
+            logging.exception("Unexpected error in workflow — escalating ticket: %s", exc)
+            self._escalate(context)
 
         return context
+
+    def _escalate(self, context: ProcessingContext) -> None:
+        """Mark the ticket as ESCALATED and append an audit entry."""
+        if context.ticket is not None:
+            context.ticket.status = TicketStatus.ESCALATED
+            context.ticket.updated_at = datetime.now(UTC)
+            try:
+                self.deps.tickets.save_ticket(context.ticket)
+            except Exception:
+                pass
+        ticket_id = context.ticket.id if context.ticket else UUID(int=0)
+        self.deps.audit.append(
+            AuditEntry(
+                ticket_id=ticket_id,
+                node="Workflow",
+                action=AuditAction.ESCALATE,
+                confidence=0.0,
+                metadata={"reason": "unhandled_error"},
+            )
+        )
+        context.stop_workflow()
 
     async def _get_next_node_class(
         self,

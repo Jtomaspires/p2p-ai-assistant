@@ -11,6 +11,7 @@ from app.ports.sap_port import SAPPort
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 SAP_DIR = ROOT / "fixtures" / "sap_mock"
+APPROVAL_OWNERS_PATH = SAP_DIR / "approval_owners.json"
 
 
 def _odata_date(value: str) -> date | None:
@@ -57,6 +58,18 @@ class MockSAPAdapter(SAPPort):
         self.clearing = clearing_payload.get("vendor_account_items", [])
         payments_payload = json.loads((sap_dir / "payment_documents.json").read_text(encoding="utf-8"))
         self.payments = payments_payload.get("payment_documents", [])
+
+        # Enrich approval invoices with owner emails from approval_owners fixture
+        owners_path = sap_dir / "approval_owners.json"
+        if owners_path.exists():
+            owners_data = json.loads(owners_path.read_text(encoding="utf-8"))
+            owners_map = {
+                entry["invoice_ref"]: entry["owner_email"]
+                for entry in owners_data.get("approval_owners", [])
+            }
+            for invoice in self.invoices:
+                if invoice.invoice_ref in owners_map:
+                    invoice.approval_owner_email = owners_map[invoice.invoice_ref]
         paid_docs = {item["document_number"] for item in self.clearing}
         for invoice in self.invoices:
             sap_doc = (invoice.sap_id or "").split("/")[0]

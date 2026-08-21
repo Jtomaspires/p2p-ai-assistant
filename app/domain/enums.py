@@ -75,6 +75,7 @@ class AuditAction(str, Enum):
     DELEGATE = "delegate"
     RESOLVE = "resolve"
     DRAFT = "draft"
+    HITL = "hitl"
     APPROVE = "approve"
     APPROVE_EDIT = "approve_edit"
     ESCALATE = "escalate"

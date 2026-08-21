@@ -3,6 +3,7 @@
 from dataclasses import dataclass
 
 from app.ports.audit_port import AuditPort
+from app.ports.draft_port import DraftPort
 from app.ports.email_port import EmailPort
 from app.ports.invoice_store_port import InvoiceStorePort
 from app.ports.llm_port import LLMPort
@@ -20,3 +21,4 @@ class WorkflowDeps:
     sap: SAPPort
     audit: AuditPort
     senders: SenderDirectoryPort
+    drafts: DraftPort
