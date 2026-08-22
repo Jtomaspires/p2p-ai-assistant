@@ -2,6 +2,7 @@
 
 from uuid import UUID
 
+from sqlalchemy import func
 from sqlmodel import Session, select
 
 from app.adapters.db_models import (
@@ -123,6 +124,30 @@ class TicketRepo(InvoiceStorePort):
             return None
         ticket.status = status
         return self.save_ticket(ticket)
+
+    def list_tickets(
+        self,
+        status: str | None = None,
+        assigned_operator_id: str | None = None,
+    ) -> list[Ticket]:
+        statement = select(TicketTable)
+        if status is not None:
+            statement = statement.where(TicketTable.status == status)
+        if assigned_operator_id is not None:
+            statement = statement.where(
+                TicketTable.assigned_operator_id == assigned_operator_id
+            )
+        statement = statement.order_by(TicketTable.received_at.desc())
+        return [_ticket_from_table(row) for row in self.session.exec(statement).all()]
+
+    def count_by_status(self) -> dict[str, int]:
+        counts = {member.value: 0 for member in TicketStatus}
+        rows = self.session.exec(
+            select(TicketTable.status, func.count(TicketTable.id)).group_by(TicketTable.status)
+        ).all()
+        for status, n in rows:
+            counts[str(status)] = int(n)
+        return counts
 
 
 def _sender_from_table(row: SenderTable) -> Sender:

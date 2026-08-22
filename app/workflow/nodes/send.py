@@ -22,11 +22,13 @@ class SendNode(Node):
         context: ProcessingContext | None = None,
         operator_id: str | None = None,
         review_action: HumanReviewAction = HumanReviewAction.APPROVED,
+        final_text: str | None = None,
         operator_notes: str | None = None,
     ) -> None:
         super().__init__(context=context)
         self.operator_id = operator_id
         self.review_action = review_action
+        self.final_text = final_text
         self.operator_notes = operator_notes
 
     async def process(self, context: ProcessingContext) -> ProcessingContext:
@@ -40,23 +42,24 @@ class SendNode(Node):
 
         op_id = self.operator_id or deps.settings.DEFAULT_OPERATOR_ID
 
-        # Apply any final edit to the draft
-        if draft is not None and self.operator_notes:
-            draft.operator_notes = self.operator_notes
-            draft.edited_by_human = True
-            draft.final_text = draft.final_text or draft.generated_text
+        if draft is not None:
+            if self.final_text is not None:
+                draft.final_text = self.final_text
+                draft.edited_by_human = True
+            elif draft.final_text is None:
+                draft.final_text = draft.generated_text
+            if self.operator_notes:
+                draft.operator_notes = self.operator_notes
             deps.drafts.save_draft(draft)
 
         send_mode = "mock"
         if deps.settings.NYLAS_SEND_ENABLED and draft is not None:
-            # Real send path (Day 4 — stub for now)
             send_mode = "nylas"
 
         ticket.status = TicketStatus.RESOLVED
         ticket.updated_at = datetime.now(UTC)
         deps.tickets.save_ticket(ticket)
 
-        # Persist HumanReview record
         if draft is not None:
             human_review = HumanReview(
                 ticket_id=ticket.id,

@@ -1,11 +1,22 @@
-"""FastAPI application — P2P AI webhook + health endpoints."""
+"""FastAPI application — P2P AI webhook + dashboard HITL endpoints."""
 
 import uuid
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
+from app.api.tickets import router as tickets_router
+
 app = FastAPI(title="P2P AI Assistant", version="0.1.0")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+app.include_router(tickets_router)
 
 
 class WebhookResponse(BaseModel):
@@ -31,8 +42,7 @@ def webhook_mock(payload: dict) -> WebhookResponse:
 
         task = process_email.delay(payload)
         return WebhookResponse(task_id=str(task.id))
-    except Exception:
-        # Broker not available — run synchronously for dev/test convenience
+    except Exception:  # noqa: BLE001
         from app.workflow.tasks import process_email
 
         result = process_email(payload)

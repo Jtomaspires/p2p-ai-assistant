@@ -2,6 +2,7 @@
 
 from uuid import UUID
 
+from app.domain.enums import TicketStatus
 from app.domain.models import Ticket
 from app.ports.invoice_store_port import InvoiceStorePort
 
@@ -31,3 +32,26 @@ class InMemoryTicketStore(InvoiceStorePort):
     def save_ticket(self, ticket: Ticket) -> Ticket:
         self._by_id[ticket.id] = ticket
         return ticket
+
+    def list_tickets(
+        self,
+        status: str | None = None,
+        assigned_operator_id: str | None = None,
+    ) -> list[Ticket]:
+        tickets = list(self._by_id.values())
+        if status is not None:
+            tickets = [ticket for ticket in tickets if ticket.status.value == status]
+        if assigned_operator_id is not None:
+            tickets = [
+                ticket
+                for ticket in tickets
+                if ticket.assigned_operator_id == assigned_operator_id
+            ]
+        tickets.sort(key=lambda ticket: ticket.received_at, reverse=True)
+        return tickets
+
+    def count_by_status(self) -> dict[str, int]:
+        counts = {member.value: 0 for member in TicketStatus}
+        for ticket in self._by_id.values():
+            counts[ticket.status.value] += 1
+        return counts
