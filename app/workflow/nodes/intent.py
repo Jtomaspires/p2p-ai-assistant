@@ -7,6 +7,7 @@ from pydantic import BaseModel
 from app.domain.context import ProcessingContext
 from app.domain.enums import AuditAction, Intent
 from app.domain.results import NodeResult
+from app.llm import prompts as _prompts
 from app.workflow.core.agent_node import AgentNode
 from app.workflow.core.base import BaseRouter, Node, RouterNode
 from app.workflow.nodes._helpers import finish, require_deps
@@ -39,13 +40,13 @@ class IntentNode(AgentNode, BaseRouter):
         return IntentOutput
 
     def build_system_prompt(self, context: ProcessingContext) -> str:
-        return "Extract P2P intent and invoice fields as JSON."
+        return _prompts.build_intent_system_prompt()
 
     def build_user_prompt(self, context: ProcessingContext) -> str:
         ticket = context.ticket
         if ticket is None:
             raise ValueError("IntentNode requires a ticket")
-        return f"Subject: {ticket.subject}\n\n{ticket.body}"
+        return _prompts.build_intent_user_prompt(subject=ticket.subject, body=ticket.body)
 
     async def process(self, context: ProcessingContext) -> ProcessingContext:
         self.context = context

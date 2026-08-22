@@ -106,6 +106,22 @@ class Output(BaseModel):
     value: str
 
 
+def test_empty_and_placeholder_llm_settings_are_ignored():
+    settings = Settings(
+        _env_file=None,
+        LLM_PRIMARY_API_KEY="test-key",
+        LLM_PRIMARY_BASE_URL="",
+        LLM_FALLBACK_MODEL="<modelo-fallback>",
+        LLM_FALLBACK_API_KEY="<chave-fallback>",
+        LLM_FALLBACK_BASE_URL="<endpoint-openai-compatible>",
+    )
+
+    assert settings.LLM_PRIMARY_BASE_URL is None
+    assert settings.LLM_FALLBACK_MODEL is None
+    assert settings.LLM_FALLBACK_API_KEY is None
+    assert settings.LLM_FALLBACK_BASE_URL is None
+
+
 @pytest.mark.asyncio
 async def test_production_llm_adapter_requires_local_api_configuration():
     adapter = OpenAILLMAdapter(Settings(_env_file=None))

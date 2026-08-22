@@ -35,6 +35,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
+py-modules = ["settings"]
 packages = [
     "app",
     "app.domain",
@@ -52,6 +53,7 @@ packages = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 asyncio_mode = "auto"
+pythonpath = ["."]
 
 [tool.ruff]
 target-version = "py312"

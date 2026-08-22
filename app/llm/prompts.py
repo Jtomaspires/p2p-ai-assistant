@@ -1,10 +1,10 @@
-"""Draft generation prompt templates — one per DraftTarget.
+"""LLM prompt templates loaded by AgentNode subclasses.
 
-Templates are kept here so DraftNode's build_system_prompt / build_user_prompt
-can load them without embedding multi-line strings inside node logic.
+Keep prompt text here so nodes only call builders in `build_system_prompt` /
+`build_user_prompt` — matching DraftNode's pattern.
 """
 
-from app.domain.enums import DraftTarget
+from app.domain.enums import DraftTarget, Intent
 
 SYSTEM_PROMPTS: dict[DraftTarget, str] = {
     DraftTarget.SENDER: (
@@ -49,6 +49,66 @@ Additional notes: {operator_notes}
 
 Generate the email draft now.
 """
+
+
+INTENT_SYSTEM_PROMPT = """\
+You classify supplier emails for a Procure-to-Pay (accounts-payable) team.
+
+Return JSON only. The `intent` field MUST be exactly one of these values:
+- payment_status
+- delay_reason
+- future_timing
+- unknown
+
+Rules:
+- Questions about payment or receipt of an invoice → payment_status.
+  Examples: "Has INV-2026-0001 been paid?", "Confirm if invoice INV-2026-9999 was received".
+- Questions about why a payment is late / blocked / overdue → delay_reason.
+  Examples: "Why is INV-2026-0010 still unpaid?", "What is blocking payment of this invoice?".
+- Questions about when a future payment will happen (timing, due date, expected date) → future_timing.
+  Examples: "When will INV-2026-0008 be paid?", "What is the expected payment date?".
+- Use unknown ONLY when there is genuinely no clear P2P payment signal
+  (greeting-only mail, unrelated request, or mixed/unreadable content).
+  Examples: "Please update our bank details", "Can you share the PO PDF?".
+
+Also extract:
+- language: ISO-like code of the email (e.g. "en", "pt") if detectable, else null
+- extracted_ref: invoice reference if present (e.g. INV-2026-9999), else null
+- extracted_amount: numeric amount string if present (e.g. "1000.00"), else null
+- extracted_date: date string if present, else null
+- confidence: a number between 0 and 1 (inclusive)
+"""
+
+TRIAGE_SYSTEM_PROMPT = """\
+Classify whether this email belongs to accounts-payable / Procure-to-Pay (P2P).
+
+Return JSON with:
+- is_ap: true if the email is about invoices, payments, payment status, due dates,
+  approval of supplier invoices, or related AP operations; false otherwise.
+- confidence: a number between 0 and 1 (inclusive).
+
+Bias toward yes (is_ap=true) when the email mentions an invoice reference, amount,
+payment, or supplier billing. Lunch invites, newsletters, and unrelated internal
+mail are not AP.
+"""
+
+
+def build_intent_system_prompt() -> str:
+    """System prompt for IntentNode (valid Intent enum values listed explicitly)."""
+    allowed = ", ".join(member.value for member in Intent)
+    return f"{INTENT_SYSTEM_PROMPT}\nAllowed intent values: {allowed}."
+
+
+def build_intent_user_prompt(*, subject: str, body: str) -> str:
+    return f"Subject: {subject}\n\n{body}"
+
+
+def build_triage_system_prompt() -> str:
+    return TRIAGE_SYSTEM_PROMPT
+
+
+def build_triage_user_prompt(*, subject: str, body: str) -> str:
+    return f"Subject: {subject}\n\n{body}"
 
 
 def build_user_prompt(

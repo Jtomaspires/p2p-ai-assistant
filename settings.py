@@ -1,5 +1,8 @@
 """Central application configuration loaded from environment variables."""
 
+from typing import Any
+
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -43,6 +46,24 @@ class Settings(BaseSettings):
     )
     TRIAGE_DISCARD_MIN_CONFIDENCE: float = 0.8
     INTENT_MIN_CONFIDENCE: float = 0.5
+
+    @field_validator(
+        "LLM_PRIMARY_API_KEY",
+        "LLM_PRIMARY_BASE_URL",
+        "LLM_FALLBACK_MODEL",
+        "LLM_FALLBACK_API_KEY",
+        "LLM_FALLBACK_BASE_URL",
+        mode="before",
+    )
+    @classmethod
+    def empty_or_placeholder_llm_setting_is_none(cls, value: Any) -> Any:
+        """Ignore empty values and documentation placeholders from .env files."""
+        if not isinstance(value, str):
+            return value
+        stripped = value.strip()
+        if not stripped or (stripped.startswith("<") and stripped.endswith(">")):
+            return None
+        return stripped
 
     model_config = SettingsConfigDict(
         env_file=".env",

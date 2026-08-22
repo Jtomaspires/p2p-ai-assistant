@@ -33,6 +33,7 @@ from app.domain.models import (
     Ticket,
 )
 from app.ports.audit_port import AuditPort
+from app.ports.draft_port import DraftPort
 from app.ports.invoice_store_port import InvoiceStorePort
 from app.ports.sender_directory_port import SenderDirectoryPort
 from app.workflow.utils.normalise import normalize_reference
@@ -312,12 +313,15 @@ class AuditRepo(AuditPort):
         ]
 
 
-class DraftRepo:
+class DraftRepo(DraftPort):
     def __init__(self, session: Session) -> None:
         self.session = session
 
     def create(self, draft: ResponseDraft) -> ResponseDraft:
-        self.session.add(
+        return self.save_draft(draft)
+
+    def save_draft(self, draft: ResponseDraft) -> ResponseDraft:
+        self.session.merge(
             ResponseDraftTable(
                 id=draft.id,
                 ticket_id=draft.ticket_id,

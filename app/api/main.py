@@ -33,15 +33,11 @@ def webhook_mock(payload: dict) -> WebhookResponse:
         return WebhookResponse(task_id=str(task.id))
     except Exception:
         # Broker not available — run synchronously for dev/test convenience
-        from app.workflow.tasks import build_workflow_deps, process_email  # noqa: F811
-        from app.workflow.workflow_registry import WorkflowRegistry
+        from app.workflow.tasks import process_email
 
-        deps = build_workflow_deps()
-        workflow = WorkflowRegistry.TICKET.value(deps)
-        ctx = workflow.run(payload)
-        ticket_id = str(ctx.ticket.id) if ctx.ticket else None
+        result = process_email(payload)
         return WebhookResponse(
             task_id=str(uuid.uuid4()),
-            ticket_id=ticket_id,
+            ticket_id=result["ticket_id"],
             message="processed_sync",
         )

@@ -5,6 +5,7 @@ from pydantic import BaseModel
 from app.domain.context import ProcessingContext
 from app.domain.enums import AuditAction, TicketStatus
 from app.domain.results import NodeResult
+from app.llm import prompts as _prompts
 from app.workflow.core.agent_node import AgentNode
 from app.workflow.core.base import BaseRouter, Node, RouterNode
 from app.workflow.nodes._helpers import finish, require_deps
@@ -40,13 +41,13 @@ class TriageNode(AgentNode, BaseRouter):
         return TriageOutput
 
     def build_system_prompt(self, context: ProcessingContext) -> str:
-        return "Classify whether this email is accounts-payable / P2P. Bias toward yes."
+        return _prompts.build_triage_system_prompt()
 
     def build_user_prompt(self, context: ProcessingContext) -> str:
         ticket = context.ticket
         if ticket is None:
             raise ValueError("TriageNode requires a ticket")
-        return f"Subject: {ticket.subject}\n\n{ticket.body}"
+        return _prompts.build_triage_user_prompt(subject=ticket.subject, body=ticket.body)
 
     async def process(self, context: ProcessingContext) -> ProcessingContext:
         self.context = context

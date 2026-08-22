@@ -57,6 +57,9 @@ class IngestionNode(Node):
             received_at=event.received_at or datetime.now(UTC),
             status=TicketStatus.OPEN,
         )
+        # Persist before Workflow records this node's audit entry. PostgreSQL
+        # enforces the audit_entries.ticket_id foreign key.
+        deps.tickets.save_ticket(context.ticket)
         result = NodeResult(
             action=AuditAction.INGEST,
             confidence=1.0,

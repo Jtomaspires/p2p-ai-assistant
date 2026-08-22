@@ -8,6 +8,7 @@ Start worker (Linux/macOS):
 """
 
 from celery import Celery
+from sqlmodel import Session, create_engine
 
 from settings import settings
 
@@ -20,19 +21,19 @@ app.conf.task_serializer = "json"
 app.conf.result_serializer = "json"
 app.conf.accept_content = ["json"]
 
+engine = create_engine(settings.DATABASE_URL, pool_pre_ping=True)
 
-def build_workflow_deps():
+
+def build_workflow_deps(session: Session):
     """Construct WorkflowDeps from environment settings.
 
-    Uses in-memory adapters for everything except the LLM (which uses the
-    configured OpenAI-compatible adapter when API key is present).
+    A fresh database session is supplied by each Celery task. SAP and sender
+    directory remain fixture-backed until their production integrations land.
     """
-    from app.adapters.memory_audit import InMemoryAuditLog
-    from app.adapters.memory_draft import InMemoryDraftStore
-    from app.adapters.memory_ticket_store import InMemoryTicketStore
     from app.adapters.mock_email import MockEmailAdapter
     from app.adapters.mock_sap import MockSAPAdapter
     from app.adapters.mock_senders import MockSenderDirectory
+    from app.adapters.postgres_repos import AuditRepo, DraftRepo, TicketRepo
     from app.domain.deps import WorkflowDeps
 
     if settings.LLM_PRIMARY_API_KEY:
@@ -48,11 +49,11 @@ def build_workflow_deps():
         settings=settings,
         llm=llm,
         email=MockEmailAdapter(),
-        tickets=InMemoryTicketStore(),
+        tickets=TicketRepo(session),
         sap=MockSAPAdapter(),
-        audit=InMemoryAuditLog(),
+        audit=AuditRepo(session),
         senders=MockSenderDirectory(),
-        drafts=InMemoryDraftStore(),
+        drafts=DraftRepo(session),
     )
 
 
@@ -61,10 +62,11 @@ def process_email(raw_payload: dict) -> dict:
     """Celery entry point: run TicketWorkflow for one inbound email payload."""
     from app.workflow.workflow_registry import WorkflowRegistry
 
-    deps = build_workflow_deps()
-    workflow = WorkflowRegistry.TICKET.value(deps)
-    ctx = workflow.run(raw_payload)
-    return {
-        "ticket_id": str(ctx.ticket.id) if ctx.ticket else None,
-        "status": ctx.ticket.status.value if ctx.ticket else None,
-    }
+    with Session(engine) as session:
+        deps = build_workflow_deps(session)
+        workflow = WorkflowRegistry.TICKET.value(deps)
+        ctx = workflow.run(raw_payload)
+        return {
+            "ticket_id": str(ctx.ticket.id) if ctx.ticket else None,
+            "status": ctx.ticket.status.value if ctx.ticket else None,
+        }
