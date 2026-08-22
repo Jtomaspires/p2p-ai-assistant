@@ -1,0 +1,17 @@
+{
+  "run_id": "2026-08-22_v1",
+  "model": "gpt-4o-mini",
+  "workflow_success_rate": 0.75,
+  "intent_accuracy": 1.0,
+  "resolution_accuracy": 0.8,
+  "draft_target_accuracy": 0.75,
+  "draft_quality_avg": 4.0,
+  "failures": [
+    "email_008: invoice_resolution_match, draft_target_match, to_email_match",
+    "email_010: invoice_resolution_match, draft_target_match, to_email_match",
+    "email_016: invoice_resolution_match, draft_target_match, to_email_match",
+    "email_017: invoice_resolution_match, draft_target_match, to_email_match",
+    "email_019: draft_target_match, to_email_match"
+  ],
+  "notes": "Deterministic FixtureGuidedLLM (set EVAL_LIVE_LLM=1 plus API key for live judge). Thread fixtures run as new tickets (extracted_ref is ephemeral)."
+}

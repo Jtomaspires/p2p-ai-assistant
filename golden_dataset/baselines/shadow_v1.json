@@ -1,0 +1,215 @@
+{
+  "shadow_run_id": "2026-08-22_v1",
+  "n_emails": 20,
+  "intent_agreement": 1.0,
+  "routing_agreement": 1.0,
+  "draft_target_agreement": 0.75,
+  "escalation_agreement": 1.0,
+  "attachment_agreement": 1.0,
+  "time_human_avg_s": 120.0,
+  "time_ai_avg_s": 0.005896960006793961,
+  "speedup_factor": 20349.468177119485,
+  "notes": "Simulated shadow rollout using synthetic fixtures, author as both human baseline and evaluator",
+  "cases": [
+    {
+      "id": "email_001",
+      "intent_h": "payment_status",
+      "intent_ai": "payment_status",
+      "intent_match": true,
+      "target_h": "invoicing",
+      "target_ai": "invoicing",
+      "target_match": true,
+      "time_ai_s": 0.0085
+    },
+    {
+      "id": "email_002",
+      "intent_h": "payment_status",
+      "intent_ai": "payment_status",
+      "intent_match": true,
+      "target_h": "sender",
+      "target_ai": "sender",
+      "target_match": true,
+      "time_ai_s": 0.0076
+    },
+    {
+      "id": "email_003",
+      "intent_h": "payment_status",
+      "intent_ai": "payment_status",
+      "intent_match": true,
+      "target_h": "approval_owners",
+      "target_ai": "approval_owners",
+      "target_match": true,
+      "time_ai_s": 0.0055
+    },
+    {
+      "id": "email_004",
+      "intent_h": "payment_status",
+      "intent_ai": "payment_status",
+      "intent_match": true,
+      "target_h": "sender",
+      "target_ai": "sender",
+      "target_match": true,
+      "time_ai_s": 0.0057
+    },
+    {
+      "id": "email_005",
+      "intent_h": "payment_status",
+      "intent_ai": "payment_status",
+      "intent_match": true,
+      "target_h": "payments",
+      "target_ai": "payments",
+      "target_match": true,
+      "time_ai_s": 0.0056
+    },
+    {
+      "id": "email_006",
+      "intent_h": "delay_reason",
+      "intent_ai": "delay_reason",
+      "intent_match": true,
+      "target_h": "payments",
+      "target_ai": "payments",
+      "target_match": true,
+      "time_ai_s": 0.0071
+    },
+    {
+      "id": "email_007",
+      "intent_h": "payment_status",
+      "intent_ai": "payment_status",
+      "intent_match": true,
+      "target_h": "sender",
+      "target_ai": "sender",
+      "target_match": true,
+      "time_ai_s": 0.0071
+    },
+    {
+      "id": "email_008",
+      "intent_h": "payment_status",
+      "intent_ai": "payment_status",
+      "intent_match": true,
+      "target_h": null,
+      "target_ai": "payments",
+      "target_match": false,
+      "time_ai_s": 0.0047
+    },
+    {
+      "id": "email_009",
+      "intent_h": "payment_status",
+      "intent_ai": "payment_status",
+      "intent_match": true,
+      "target_h": null,
+      "target_ai": null,
+      "target_match": true,
+      "time_ai_s": 0.0047
+    },
+    {
+      "id": "email_010",
+      "intent_h": "payment_status",
+      "intent_ai": "payment_status",
+      "intent_match": true,
+      "target_h": null,
+      "target_ai": "sender",
+      "target_match": false,
+      "time_ai_s": 0.0057
+    },
+    {
+      "id": "email_011",
+      "intent_h": "unknown",
+      "intent_ai": "unknown",
+      "intent_match": true,
+      "target_h": null,
+      "target_ai": null,
+      "target_match": true,
+      "time_ai_s": 0.0054
+    },
+    {
+      "id": "email_012",
+      "intent_h": "unknown",
+      "intent_ai": "unknown",
+      "intent_match": true,
+      "target_h": null,
+      "target_ai": null,
+      "target_match": true,
+      "time_ai_s": 0.004
+    },
+    {
+      "id": "email_013",
+      "intent_h": "payment_status",
+      "intent_ai": "payment_status",
+      "intent_match": true,
+      "target_h": null,
+      "target_ai": null,
+      "target_match": true,
+      "time_ai_s": 0.0051
+    },
+    {
+      "id": "email_014",
+      "intent_h": "payment_status",
+      "intent_ai": "payment_status",
+      "intent_match": true,
+      "target_h": "sender",
+      "target_ai": "sender",
+      "target_match": true,
+      "time_ai_s": 0.0061
+    },
+    {
+      "id": "email_015",
+      "intent_h": "payment_status",
+      "intent_ai": "payment_status",
+      "intent_match": true,
+      "target_h": "invoicing",
+      "target_ai": "invoicing",
+      "target_match": true,
+      "time_ai_s": 0.0067
+    },
+    {
+      "id": "email_016",
+      "intent_h": "payment_status",
+      "intent_ai": "payment_status",
+      "intent_match": true,
+      "target_h": "sender",
+      "target_ai": null,
+      "target_match": false,
+      "time_ai_s": 0.0066
+    },
+    {
+      "id": "email_017",
+      "intent_h": "payment_status",
+      "intent_ai": "payment_status",
+      "intent_match": true,
+      "target_h": null,
+      "target_ai": "sender",
+      "target_match": false,
+      "time_ai_s": 0.0055
+    },
+    {
+      "id": "email_018",
+      "intent_h": "future_timing",
+      "intent_ai": "future_timing",
+      "intent_match": true,
+      "target_h": "sender",
+      "target_ai": "sender",
+      "target_match": true,
+      "time_ai_s": 0.0047
+    },
+    {
+      "id": "email_019",
+      "intent_h": "payment_status",
+      "intent_ai": "payment_status",
+      "intent_match": true,
+      "target_h": null,
+      "target_ai": "approval_owners",
+      "target_match": false,
+      "time_ai_s": 0.0055
+    },
+    {
+      "id": "email_020",
+      "intent_h": "payment_status",
+      "intent_ai": "payment_status",
+      "intent_match": true,
+      "target_h": "invoicing",
+      "target_ai": "invoicing",
+      "target_match": true,
+      "time_ai_s": 0.006
+    }
+  ]
+}
